@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repa</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: #0a0a0a;
+    color: #e8e4d9;
+    font-family: 'Crimson Pro', Georgia, serif;
+    overflow: hidden;
+  }
+
+  #stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 30px;
+  }
+
+  #stage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center,
+      transparent 30%,
+      rgba(10,10,10,0.7) 70%,
+      rgba(10,10,10,0.95) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  #content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  #logo {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+
+  #logo-repa {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: 4px;
+  }
+
+  #logo-ration {
+    font-family: 'Crimson Pro', serif;
+    font-size: 34px;
+    font-style: italic;
+    font-weight: 300;
+    color: #e8e4d9;
+    line-height: 1;
+    display: none;
+  }
+
+  #tagline {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: #e8e4d9;
+    letter-spacing: 1px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+  }
+
+  #reparation-word {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: lowercase;
+    color: #40916c;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.2s forwards;
+  }
+
+  #enter-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: transparent;
+    color: #e8e4d9;
+    border: 1px solid #5a3e2b;
+    padding: 14px 40px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.6s forwards;
+  }
+
+  #enter-btn:hover {
+    background: #5a3e2b;
+    color: #fff;
+    border-color: #8b5e3c;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="content">
+
+    <div id="logo">
+      <span id="logo-repa">REPA</span><span id="logo-ration"></span>
+    </div>
+
+    <div id="tagline">Some debts are written in blood. This is the ledger.</div>
+
+    <div id="reparation-word">reparation</div>
+
+    <a href="/map" id="enter-btn">Enter</a>
+
+  </div>
+</div>
+</body>
+</html>
