@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Repa</title>
+<title>Deep Roots Archive</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
@@ -16,8 +16,8 @@
     --muted:   #5a6b57;
     --dim:     #3a4a37;
     --red:     #c0392b;
-    --green:   #40916c;
-    --darkgreen:#2d6a4f;
+    --green:   #c0392b;
+    --darkgreen:#8b0000;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -335,9 +335,9 @@
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: #1a1a0a;
-    border: 1.5px solid #5a3e2b;
-    color: #8b5e3c;
+    background: #1a0a0a;
+    border: 1.5px solid #8b0000;
+    color: #c0392b;
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -348,7 +348,7 @@
     user-select: none;
   }
 
-  #facts-dot:hover { background: #5a3e2b; color: #fff; }
+  #facts-dot:hover { background: #8b0000; color: #fff; }
 
   #facts-drawer {
     position: fixed;
@@ -356,8 +356,8 @@
     left: 16px;
     width: 310px;
     max-height: 70vh;
-    background: #0d0f0a;
-    border: 1px solid #1f2010;
+    background: #0d0a0a;
+    border: 1px solid #1f0a0a;
     border-radius: 6px;
     z-index: 1999;
     display: none;
@@ -386,7 +386,7 @@
     font-size: 8px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: #8b5e3c;
+    color: #c0392b;
     margin-bottom: 10px;
   }
 
@@ -394,7 +394,7 @@
     display: flex;
     justify-content: space-between;
     padding: 4px 0;
-    border-bottom: 1px solid #141a0f;
+    border-bottom: 1px solid #1a0a0a;
   }
 
   .fact-label { font-size: 9px; color: var(--text); }
@@ -412,7 +412,7 @@
     color: var(--text);
     line-height: 1.6;
     padding: 9px 0;
-    border-bottom: 1px solid #141a0f;
+    border-bottom: 1px solid #1a0a0a;
   }
 
   .fact-year {
@@ -486,9 +486,9 @@
 <div id="header">
   <div id="branding">
     <div id="logo">
-      <span id="logo-repa">REPA</span><span id="logo-ration">ration</span>
+      <span id="logo-repa">DEEP ROOTS</span><span id="logo-ration"> ARCHIVE</span>
     </div>
-    <div id="tagline">Documenting state violence against Black, Indigenous &amp; POC communities</div>
+    <div id="tagline">The debt America has never paid. Documented.</div>
   </div>
   <div id="header-right">
     <div id="total-count">{{ total }}</div>
@@ -518,7 +518,7 @@
   <!-- Legend -->
   <div id="legend">
     <div class="legend-item"><div class="legend-dot" style="background:#c0392b;"></div>Police Killing</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#8b5e3c;"></div>Lynching</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#c0392b;"></div>Lynching</div>
     <div class="legend-item"><div class="legend-dot" style="background:#6a4c9c;"></div>Massacre</div>
     <div class="legend-item"><div class="legend-dot" style="background:#e74c3c;"></div>Hate Crime</div>
     <div class="legend-item"><div class="legend-dot" style="background:#c0392b; border: 2px solid #fff;"></div>MMIW</div>
@@ -627,7 +627,7 @@ const SERVER_TOTAL = {{ total }};
 
 const TYPE_COLORS = {
   police_killing: '#c0392b',
-  lynching:       '#8b5e3c',
+  lynching:       '#c0392b',
   massacre:       '#6a4c9c',
   hate_crime:     '#e74c3c',
   mmiw:           '#c0392b',
@@ -687,7 +687,7 @@ function renderMap() {
       <div class="popup-type">${(c.record_type||'').replace('_',' ')}</div>
       <div class="popup-summary">${(c.summary||'').slice(0,160)}${c.summary&&c.summary.length>160?'…':''}</div>
       <div class="popup-meta">${c.city||''} ${c.state||''} &nbsp;·&nbsp; ${c.date||''}</div>
-      ${c.source_url ? `<div class="popup-meta" style="margin-top:4px;"><a href="${c.source_url}" target="_blank" style="color:#8b5e3c;">source ↗</a></div>` : ''}
+      ${c.source_url ? `<div class="popup-meta" style="margin-top:4px;"><a href="${c.source_url}" target="_blank" style="color:#c0392b;">source ↗</a></div>` : ''}
     `);
     markers.addLayer(circle);
   });
