@@ -20,6 +20,19 @@ import requests
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 
+# Team engine — imported lazily to avoid circular imports
+_engine = None
+
+def _get_engine():
+    global _engine
+    if _engine is None:
+        try:
+            from repo.team.engine import TeamEngine
+            _engine = TeamEngine()
+        except Exception as e:
+            print(f"[Repo] Team engine unavailable: {e}")
+    return _engine
+
 
 # ── State coords fallback ─────────────────────────────────────────────────────
 
@@ -298,6 +311,25 @@ class RepoScanner:
             unique.append(r)
 
         print(f"[Repo] After dedup: {len(unique)}")
+
+        # Run team pipeline
+        engine = _get_engine()
+        if engine:
+            try:
+                scan_result = {
+                    "found":   len(raw),
+                    "saved":   0,
+                    "sources": {
+                        "CourtListener": len([r for r in raw if r.get("source_name") == "CourtListener"]),
+                        "AP RSS":        len([r for r in raw if r.get("source_name") == "AP News"]),
+                        "DOJ":           len([r for r in raw if r.get("source_name") == "DOJ Office of Public Affairs"]),
+                    },
+                    "anomalies": [],
+                }
+                unique, team_report = engine.run(unique, scan_result)
+                print(f"[Repo] Team pipeline complete — {len(unique)} cases processed.")
+            except Exception as e:
+                print(f"[Repo] Team pipeline error: {e}")
 
         # Geocode
         for r in unique:
