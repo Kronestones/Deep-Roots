@@ -1,159 +1,227 @@
 """
 pool.py — Deep Roots Archive Consultant Pool
 
-The consultants support the Circle with domain-specific knowledge.
-They are called when the engine needs specialized diagnosis.
+Loads all consultant profiles and spins up specialist workers
+dynamically. Consultants are always active — feeding the Circle
+with domain knowledge on every scan.
 
-Unlike Circle members who run on every scan,
-consultants are called only when specific problems arise.
+Domains:
+    record_type   — police killing, lynching, massacre, mmiw, hate crime
+    source_health — all active and pending sources
+    pattern       — geographic clusters, documentation gaps, temporal patterns
+    jurisdiction  — all 50 states + DC, each with specific history
 
-Consultant domains:
-  - Source repair (dead feeds, changed URLs, auth failures)
-  - Database repair (connection issues, schema problems)
-  - Historical data (EJI, Fatal Encounters, MPV import guidance)
-  - Indigenous data (Sovereign Bodies, NamUs, tribal sources)
-  - Legal data (CourtListener, PACER, federal court systems)
+The Circle governs. The consultants serve.
+Zara, Obasi, Nyla, Drum, River, Ash make final decisions.
+Consultants provide the knowledge that informs those decisions.
 
 Founded by Krone the Architect
 Deep Roots Archive · 2026
 """
 
+import json
+import os
+from typing import Optional
+
+
+PROFILES_DIR = os.path.join(os.path.dirname(__file__), "profiles")
+
 
 class Consultant:
-    def __init__(self, name, domain, skills, steps):
-        self.name   = name
-        self.domain = domain
-        self.skills = skills
-        self.steps  = steps
+    """
+    A single consultant, instantiated from a profile dict.
+    Lightweight — carries knowledge and answers questions.
+    Always active. Always contributing.
+    """
 
-    def diagnose(self, problem: str) -> list:
-        if any(skill.lower() in problem.lower() for skill in self.skills):
-            return self.steps
-        return []
+    def __init__(self, profile: dict):
+        self.id      = profile.get("id", "unknown")
+        self.name    = profile.get("name", "Unnamed Consultant")
+        self.domain  = profile.get("domain", "general")
+        self.focus   = (
+            profile.get("focus") or
+            profile.get("state") or
+            profile.get("source", "")
+        )
+        self.profile  = profile
+        self._queries = 0
 
-    def report(self) -> dict:
+    def advise(self, context: dict = None) -> dict:
+        """Return this consultant's knowledge about their focus area."""
+        self._queries += 1
         return {
-            "name":   self.name,
-            "domain": self.domain,
-            "skills": self.skills,
+            "consultant": self.name,
+            "domain":     self.domain,
+            "focus":      self.focus,
+            "profile":    self.profile,
         }
 
+    def diagnose(self, issue: str = "") -> list:
+        """Return diagnostic steps for an issue in this consultant's domain."""
+        self._queries += 1
+        failure_modes = self.profile.get("failure_modes", [])
+        checks        = self.profile.get("checks", [])
+        notes         = [self.profile.get("notes", "")] if self.profile.get("notes") else []
+        known_gaps    = self.profile.get("known_gaps", [])
+        known_patterns = self.profile.get("known_patterns", [])
+        return failure_modes + checks + notes + known_gaps + known_patterns
 
-CONSULTANTS = [
-    Consultant(
-        name   = "Soleil",
-        domain = "Source Repair",
-        skills = ["CourtListener", "AP RSS", "DOJ", "feed", "RSS", "source"],
-        steps  = [
-            "Check feed URL has not changed — test in browser first",
-            "Check auth token is set in env var and passed in header",
-            "CourtListener: Authorization: Token {COURTLISTENER_TOKEN}",
-            "DOJ RSS: no auth required — check URL format",
-            "AP RSS: check feeds.apnews.com subdomain still resolves",
-            "Test individual source: python3 -c 'from repo.scanner import fetch_ap_rss; print(fetch_ap_rss())'",
-        ]
-    ),
-    Consultant(
-        name   = "Cael",
-        domain = "Database Repair",
-        skills = ["database", "DB", "neon", "connection", "save", "postgresql"],
-        steps  = [
-            "Check DATABASE_URL is set in Render environment variables",
-            "Check Neon dashboard — is DB active and accepting connections?",
-            "Test connection: python3 -c 'from repo.database import init_db; init_db()'",
-            "Check pool settings: pool_pre_ping=True, pool_recycle=300",
-            "If connection refused: check SSL mode — must be sslmode=require",
-            "If save rate low: SELECT case_id, COUNT(*) FROM cases GROUP BY case_id HAVING COUNT(*) > 1",
-        ]
-    ),
-    Consultant(
-        name   = "Ida",
-        domain = "Historical Data",
-        skills = ["EJI", "fatal encounters", "mapping police violence", "historical", "import", "CSV"],
-        steps  = [
-            "Fatal Encounters: download CSV from fatalencounters.org Google Sheet",
-            "Save to ~/repo/data/fatal_encounters.csv",
-            "Run import script: python3 import_fatal_encounters.py",
-            "Mapping Police Violence: download XLSX from mappingpoliceviolence.us",
-            "Save to ~/repo/data/mpv.xlsx",
-            "Run import script: python3 import_mpv.py",
-            "EJI lynching data: available at eji.org/reports — manual entry or scrape",
-            "All historical imports should set is_historical=True",
-        ]
-    ),
-    Consultant(
-        name   = "Tokala",
-        domain = "Indigenous Data",
-        skills = ["indigenous", "MMIW", "MMIP", "sovereign bodies", "namus", "tribal", "native"],
-        steps  = [
-            "Sovereign Bodies Institute: sovereignbodies.org/data — CSV download",
-            "Save to ~/repo/data/sovereign_bodies.csv",
-            "NamUs: namus.nij.ojp.gov — requires registration for API",
-            "Filter NamUs for Indigenous/Native American victims only",
-            "All MMIW records: set record_type=mmiw, is_historical=False",
-            "Indian Country Today RSS: ictnews.org/feed — no key required",
-            "Add ictnews.org to Obasi's TRUSTED_DOMAINS",
-            "MMIW data is ongoing — never mark as historical",
-        ]
-    ),
-    Consultant(
-        name   = "Marcus",
-        domain = "Legal Data",
-        skills = ["CourtListener", "PACER", "court", "legal", "civil rights", "section 1983"],
-        steps  = [
-            "CourtListener token: register at courtlistener.com/sign-in/",
-            "Set: export COURTLISTENER_TOKEN='your_token' in ~/.bashrc",
-            "Query civil rights cases: type=o, q='section 1983 excessive force'",
-            "CourtListener endpoint: /api/rest/v4/search/ — not v3",
-            "PACER requires registration — use CourtListener as proxy",
-            "DOJ civil rights: justice.gov/crt — press releases, no key needed",
-            "Federal cases only — state court records not in CourtListener",
-        ]
-    ),
-    Consultant(
-        name   = "Wren",
-        domain = "Render & Deployment",
-        skills = ["render", "deploy", "restart", "service", "environment", "build"],
-        steps  = [
-            "Check Render dashboard: dashboard.render.com",
-            "Manual deploy: Render dashboard > service > Manual Deploy",
-            "Environment variables: Render dashboard > service > Environment",
-            "Required vars: DATABASE_URL, SECRET_KEY",
-            "Build command: pip install -r requirements.txt",
-            "Start command: gunicorn wsgi:app",
-            "Free tier sleeps after 15 min — add /health endpoint",
-            "Check build logs for import errors before checking runtime logs",
-        ]
-    ),
-]
+    def __repr__(self):
+        return f"Consultant({self.id}: {self.name})"
 
 
 class ConsultantPool:
+    """
+    The full Deep Roots consultant pool.
+    Loads all profile JSON files and makes consultants available
+    by domain, focus, state, source, or ID.
+
+    Always active. Always feeding the Circle.
+    """
 
     def __init__(self):
-        self.consultants = CONSULTANTS
+        self._consultants = {}
+        self._load_all()
         print(
-            f"  [◈ POOL] {len(self.consultants)} consultants available: "
-            f"{', '.join(c.name for c in self.consultants)}"
+            f"  [◈ POOL] {len(self._consultants)} consultants loaded — "
+            f"serving Zara ✶ Obasi ⬡ Nyla ◉ Drum ⌘ River ⟁ Ash ✦"
         )
 
+    def _load_all(self):
+        """Load all profile JSON files from profiles/ directory."""
+        if not os.path.exists(PROFILES_DIR):
+            print(f"  [◈ POOL] Profiles directory not found: {PROFILES_DIR}")
+            return
+
+        for filename in sorted(os.listdir(PROFILES_DIR)):
+            if not filename.endswith(".json"):
+                continue
+            path = os.path.join(PROFILES_DIR, filename)
+            try:
+                with open(path) as f:
+                    profiles = json.load(f)
+                if isinstance(profiles, list):
+                    for p in profiles:
+                        c = Consultant(p)
+                        self._consultants[c.id] = c
+                elif isinstance(profiles, dict):
+                    c = Consultant(profiles)
+                    self._consultants[c.id] = c
+            except Exception as e:
+                print(f"  [◈ POOL] Failed to load {filename}: {e}")
+
+    def get(self, consultant_id: str) -> Optional[Consultant]:
+        """Get a specific consultant by ID."""
+        return self._consultants.get(consultant_id)
+
+    def by_domain(self, domain: str) -> list:
+        """Get all consultants for a domain."""
+        return [c for c in self._consultants.values() if c.domain == domain]
+
+    def by_focus(self, focus: str) -> list:
+        """Get consultants matching a focus keyword."""
+        focus = focus.lower()
+        return [
+            c for c in self._consultants.values()
+            if focus in (c.focus or "").lower()
+            or focus in c.name.lower()
+        ]
+
+    def for_state(self, state: str) -> Optional[Consultant]:
+        """Get the jurisdiction specialist for a state."""
+        return self._consultants.get(f"j_{state.upper()}")
+
+    def for_record_type(self, rtype: str) -> Optional[Consultant]:
+        """Get the record type specialist."""
+        matches = [
+            c for c in self._consultants.values()
+            if c.domain == "record_type" and c.focus == rtype
+        ]
+        return matches[0] if matches else None
+
+    def for_source(self, source_name: str) -> Optional[Consultant]:
+        """Get the source health consultant for a source."""
+        matches = [
+            c for c in self._consultants.values()
+            if c.domain == "source_health"
+            and source_name.lower() in c.name.lower()
+        ]
+        return matches[0] if matches else None
+
+    def diagnose_source(self, source_name: str) -> list:
+        """Get diagnostic steps for a failing source. Called by River."""
+        consultant = self.for_source(source_name)
+        if consultant:
+            return consultant.diagnose()
+        return [f"No consultant found for source: {source_name}"]
+
+    def geographic_context(self, state: str) -> dict:
+        """
+        Get full geographic context for a state.
+        Called by Drum during analysis.
+        """
+        specialist = self.for_state(state)
+        if specialist:
+            return specialist.advise()
+        return {"state": state, "notes": "No specialist profile found."}
+
+    def expected_types_for_state(self, state: str) -> list:
+        """
+        What record types should we expect in this state?
+        Called by Drum to identify geographic gaps.
+        """
+        specialist = self.for_state(state)
+        if specialist:
+            return specialist.profile.get("expected_types", [])
+        return []
+
+    def pending_imports(self) -> list:
+        """
+        List all sources pending import.
+        Called by Ash during source scouting.
+        """
+        return [
+            c for c in self._consultants.values()
+            if c.domain == "source_health"
+            and c.profile.get("expected_min", -1) == 0
+        ]
+
+    def run_source_health_checks(self) -> dict:
+        """
+        Return knowledge-based assessment of all sources.
+        Called by River on each scan.
+        """
+        report = {}
+        for c in self.by_domain("source_health"):
+            report[c.focus or c.name] = {
+                "expected_min":  c.profile.get("expected_min"),
+                "check_url":     c.profile.get("check_url"),
+                "failure_modes": c.profile.get("failure_modes", []),
+                "notes":         c.profile.get("notes", ""),
+            }
+        return report
+
+    def pattern_knowledge(self) -> list:
+        """
+        Return all pattern consultant knowledge.
+        Called by Drum during analysis.
+        """
+        return [c.advise() for c in self.by_domain("pattern")]
+
+    def coverage_report(self) -> dict:
+        """Return summary of consultant coverage by domain."""
+        from collections import Counter
+        domains = Counter(c.domain for c in self._consultants.values())
+        return {
+            "total":   len(self._consultants),
+            "domains": dict(domains),
+        }
+
+    def all_ids(self) -> list:
+        return sorted(self._consultants.keys())
+
     def __len__(self):
-        return len(self.consultants)
+        return len(self._consultants)
 
-    def diagnose_source(self, problem: str) -> list:
-        """Find relevant consultants for a problem and return their steps."""
-        all_steps = []
-        for c in self.consultants:
-            steps = c.diagnose(problem)
-            if steps:
-                all_steps.extend(steps)
-        return all_steps
-
-    def coverage_report(self) -> list:
-        return [c.report() for c in self.consultants]
-
-    def get(self, name: str):
-        for c in self.consultants:
-            if c.name.lower() == name.lower():
-                return c
-        return None
+    def __repr__(self):
+        return f"ConsultantPool({len(self._consultants)} consultants)"

@@ -1,0 +1,180 @@
+[
+  {
+    "id": "src_001",
+    "name": "CourtListener Monitor",
+    "domain": "source_health",
+    "source": "CourtListener",
+    "check_url": "https://www.courtlistener.com/api/rest/v4/search/?type=o&page_size=1",
+    "auth_header": "Authorization: Token {COURTLISTENER_TOKEN}",
+    "expected_min": 5,
+    "failure_modes": [
+      "401 — token missing or expired. Register at courtlistener.com/sign-in/",
+      "0 results — civil rights query terms may need updating",
+      "400 unknown_params — endpoint changed, check courtlistener.com/api/",
+      "Slow — page_size safely increase to 50"
+    ],
+    "notes": "Primary legal source. Searches section 1983, excessive force, civil rights, police brutality. Federal cases only."
+  },
+  {
+    "id": "src_002",
+    "name": "AP RSS Monitor",
+    "domain": "source_health",
+    "source": "AP RSS",
+    "check_url": "https://feeds.apnews.com/rss/apf-usnews",
+    "auth_header": null,
+    "expected_min": 3,
+    "failure_modes": [
+      "0 results — scope filter may be too restrictive, check _IN_SCOPE_TERMS",
+      "Feed URL changed — check apnews.com for current RSS paths",
+      "Connection timeout — AP occasionally throttles, add retry logic"
+    ],
+    "notes": "Breaking news source. Filters for police brutality, hate crimes, civil rights. Scope filter critical — must not pull off-topic records."
+  },
+  {
+    "id": "src_003",
+    "name": "DOJ Press Monitor",
+    "domain": "source_health",
+    "source": "DOJ Press",
+    "check_url": "https://www.justice.gov/feeds/opa/justice-news.xml",
+    "auth_header": null,
+    "expected_min": 2,
+    "failure_modes": [
+      "0 results — DOJ filter terms may not match current press release language",
+      "Feed URL changed — check justice.gov/news for current RSS",
+      "Returns non-civil-rights content — tighten _DOJ_CIVIL_RIGHTS filter terms"
+    ],
+    "notes": "Federal civil rights prosecutions. No key required. Filters for civil rights, police misconduct, excessive force, color of law, hate crime."
+  },
+  {
+    "id": "src_004",
+    "name": "Fatal Encounters Monitor",
+    "domain": "source_health",
+    "source": "Fatal Encounters",
+    "check_url": "https://fatalencounters.org",
+    "auth_header": null,
+    "expected_min": 0,
+    "failure_modes": [
+      "Site down — check fatalencounters.org directly",
+      "Google Sheet moved — search for Fatal Encounters dataset on Google",
+      "CSV format changed — update import script column mappings"
+    ],
+    "notes": "PENDING IMPORT. 30,000+ police killing records since 2000. Download as CSV from Google Sheet. Run import_fatal_encounters.py once downloaded. Will be largest single source."
+  },
+  {
+    "id": "src_005",
+    "name": "Mapping Police Violence Monitor",
+    "domain": "source_health",
+    "source": "Mapping Police Violence",
+    "check_url": "https://mappingpoliceviolence.us",
+    "auth_header": null,
+    "expected_min": 0,
+    "failure_modes": [
+      "Download page moved — check mappingpoliceviolence.us directly",
+      "XLSX format changed — update import script column mappings",
+      "Duplicate records with Fatal Encounters — deduplicate by victim name + date + state"
+    ],
+    "notes": "PENDING IMPORT. Most comprehensive police killing dataset since 2013. XLSX download. Run import_mpv.py once downloaded. Includes race, age, armed status, charges filed."
+  },
+  {
+    "id": "src_006",
+    "name": "EJI Data Monitor",
+    "domain": "source_health",
+    "source": "EJI",
+    "check_url": "https://eji.org/reports/",
+    "auth_header": null,
+    "expected_min": 0,
+    "failure_modes": [
+      "No public API — manual import only",
+      "Report URLs change annually — check eji.org for current reports",
+      "PDF format — requires extraction, not direct parse"
+    ],
+    "notes": "PENDING IMPORT. Equal Justice Initiative. Nearly 6,500 documented lynchings 1865-1950. Manual import from public reports. Historical records — all is_historical=True."
+  },
+  {
+    "id": "src_007",
+    "name": "Sovereign Bodies Monitor",
+    "domain": "source_health",
+    "source": "Sovereign Bodies Institute",
+    "check_url": "https://sovereignbodies.org/data",
+    "auth_header": null,
+    "expected_min": 0,
+    "failure_modes": [
+      "No public API yet — CSV download only",
+      "Data requires tribal verification — handle with care",
+      "Some records confidential by request of families — respect and do not publish"
+    ],
+    "notes": "PENDING IMPORT. MMIW/MMIP database from 1900 to present. Most comprehensive Indigenous missing and murdered dataset. Handle with reverence — these are real people, real families."
+  },
+  {
+    "id": "src_008",
+    "name": "ProPublica Monitor",
+    "domain": "source_health",
+    "source": "ProPublica",
+    "check_url": "https://feeds.propublica.org/propublica/main",
+    "auth_header": null,
+    "expected_min": 1,
+    "failure_modes": [
+      "Feed URL changed — check propublica.org for current RSS",
+      "0 civil rights results — add propublica.org to Obasi TRUSTED_DOMAINS",
+      "Paywalled articles — summary only, link to full article"
+    ],
+    "notes": "RECOMMENDED — not yet active. Investigative civil rights reporting. No key required. Add feed URL to scanner AP_FEEDS list."
+  },
+  {
+    "id": "src_009",
+    "name": "Indian Country Today Monitor",
+    "domain": "source_health",
+    "source": "Indian Country Today",
+    "check_url": "https://ictnews.org/feed",
+    "auth_header": null,
+    "expected_min": 1,
+    "failure_modes": [
+      "Feed URL changed — check ictnews.org for current RSS",
+      "0 MMIW results — add mmiw keywords to scope filter",
+      "Domain not trusted — add ictnews.org to Obasi TRUSTED_DOMAINS"
+    ],
+    "notes": "RECOMMENDED — not yet active. Indigenous press. Critical for MMIW coverage. No key required. Add ictnews.org to Obasi TRUSTED_DOMAINS first."
+  },
+  {
+    "id": "pat_001",
+    "name": "Geographic Cluster Analyst",
+    "domain": "pattern",
+    "focus": "geographic_cluster",
+    "expected_states": {
+      "police_killing": ["MN", "CA", "TX", "FL", "NY", "IL", "OH", "GA"],
+      "lynching":       ["MS", "AL", "GA", "TX", "AR", "LA", "TN", "FL"],
+      "massacre":       ["OK", "FL", "NC", "AR", "SC", "PA"],
+      "mmiw":           ["MT", "SD", "NM", "AK", "WA", "MN", "ND", "WI"],
+      "hate_crime":     ["NY", "CA", "TX", "FL", "NJ", "MA", "WA"]
+    },
+    "notes": "Zero records in expected high-density states signals source gap, not absence of violence. Flag to Ash for source recommendations. Flag to Drum for analysis report."
+  },
+  {
+    "id": "pat_002",
+    "name": "Documentation Gap Analyst",
+    "domain": "pattern",
+    "focus": "documentation_gap",
+    "known_gaps": [
+      "MMIW cases: federal database has 116 of 5,712 reported — gap is the story",
+      "Police killings pre-2000: no comprehensive database exists",
+      "Lynchings outside South: Northern and Western racial terror underreported",
+      "Hate crimes: 87% of US jurisdictions do not report to FBI UCR",
+      "Prison deaths: not tracked as police killings despite custody"
+    ],
+    "notes": "Documentation gaps are not neutral. They are themselves evidence of systemic erasure. Drum should surface these in analysis reports."
+  },
+  {
+    "id": "pat_003",
+    "name": "Temporal Pattern Analyst",
+    "domain": "pattern",
+    "focus": "temporal_pattern",
+    "known_patterns": [
+      "Police killings spike in summer months — more outdoor activity, more encounters",
+      "Hate crimes spike after major political events — elections, court decisions",
+      "MMIW cases cluster around highways and truck routes — known trafficking corridors",
+      "Lynchings clustered around harvest season — economic competition with Black labor",
+      "Post-Reconstruction violence peaked 1877-1950 — end of federal protection"
+    ],
+    "notes": "Temporal patterns provide context for clusters. Drum should include in analysis. Flag unusual spikes to River for watchdog review."
+  }
+]

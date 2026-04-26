@@ -1,0 +1,461 @@
+[
+  {
+    "id": "j_AL",
+    "name": "Alabama Specialist",
+    "domain": "jurisdiction",
+    "state": "AL",
+    "expected_types": ["lynching", "hate_crime", "police_killing"],
+    "historical_density": "critical",
+    "notes": "4th highest lynching count in EJI data. Birmingham church bombing 1963. Selma — Bloody Sunday 1965. High police killing rate. Montgomery — cradle of civil rights movement and site of intense racial terror."
+  },
+  {
+    "id": "j_AK",
+    "name": "Alaska Specialist",
+    "domain": "jurisdiction",
+    "state": "AK",
+    "expected_types": ["mmiw", "police_killing"],
+    "historical_density": "high",
+    "notes": "Highest per-capita MMIW rate in the nation. Remote geography creates extreme documentation gaps. Many cases never reported to federal databases. Indigenous women murdered at 10x national average in some regions."
+  },
+  {
+    "id": "j_AZ",
+    "name": "Arizona Specialist",
+    "domain": "jurisdiction",
+    "state": "AZ",
+    "expected_types": ["mmiw", "police_killing", "hate_crime"],
+    "historical_density": "high",
+    "notes": "Navajo Nation — largest Indigenous land area in US. High MMIW density. Border region hate crimes. Significant police killing rate. Tohono O'odham Nation cases frequently underdocumented."
+  },
+  {
+    "id": "j_AR",
+    "name": "Arkansas Specialist",
+    "domain": "jurisdiction",
+    "state": "AR",
+    "expected_types": ["lynching", "massacre", "police_killing"],
+    "historical_density": "critical",
+    "notes": "Elaine Massacre 1919 — up to 800 Black residents killed. High lynching density. Historically one of most violent states for racial terror. Scott County and Phillips County — documented mass violence."
+  },
+  {
+    "id": "j_CA",
+    "name": "California Specialist",
+    "domain": "jurisdiction",
+    "state": "CA",
+    "expected_types": ["police_killing", "hate_crime", "mmiw"],
+    "historical_density": "high",
+    "notes": "Highest total police killing count nationally due to population. Significant hate crime reporting. Anti-Asian violence spike post-2020. Indigenous communities in Northern California — significant MMIW cases."
+  },
+  {
+    "id": "j_CO",
+    "name": "Colorado Specialist",
+    "domain": "jurisdiction",
+    "state": "CO",
+    "expected_types": ["massacre", "mmiw", "police_killing"],
+    "historical_density": "high",
+    "notes": "Sand Creek Massacre 1864 — 700 US Army troops killed 230 Cheyenne and Arapaho. One of most documented Indigenous massacres. Significant MMIW cases in urban and rural areas."
+  },
+  {
+    "id": "j_CT",
+    "name": "Connecticut Specialist",
+    "domain": "jurisdiction",
+    "state": "CT",
+    "expected_types": ["police_killing", "hate_crime"],
+    "historical_density": "moderate",
+    "notes": "Northern state with significant police killing incidents. Hate crimes in Hartford and New Haven. Lower historical lynching count but documented racial terror incidents."
+  },
+  {
+    "id": "j_DE",
+    "name": "Delaware Specialist",
+    "domain": "jurisdiction",
+    "state": "DE",
+    "expected_types": ["police_killing", "hate_crime"],
+    "historical_density": "moderate",
+    "notes": "Small state. Documented police killings. Some hate crime incidents. Lower overall density but incidents should not be absent."
+  },
+  {
+    "id": "j_FL",
+    "name": "Florida Specialist",
+    "domain": "jurisdiction",
+    "state": "FL",
+    "expected_types": ["massacre", "lynching", "police_killing", "hate_crime"],
+    "historical_density": "critical",
+    "notes": "Rosewood Massacre 1923. High lynching count. Trayvon Martin 2012 — Sanford. High police killing rate. Significant hate crime incidents. Ocoee Massacre 1920 — largest instance of voting day violence in US history."
+  },
+  {
+    "id": "j_GA",
+    "name": "Georgia Specialist",
+    "domain": "jurisdiction",
+    "state": "GA",
+    "expected_types": ["lynching", "hate_crime", "police_killing"],
+    "historical_density": "critical",
+    "notes": "Highest lynching count in EJI data — 589 documented. Ahmaud Arbery 2020 — Brunswick. Atlanta — significant civil rights history and ongoing police violence. Leo Frank lynching 1915."
+  },
+  {
+    "id": "j_HI",
+    "name": "Hawaii Specialist",
+    "domain": "jurisdiction",
+    "state": "HI",
+    "expected_types": ["police_killing", "hate_crime"],
+    "historical_density": "low",
+    "notes": "Lower density but not absent. Anti-Asian and anti-Pacific Islander hate crimes documented. Police killings occur. Indigenous Hawaiian rights — not MMIW category but related erasure."
+  },
+  {
+    "id": "j_ID",
+    "name": "Idaho Specialist",
+    "domain": "jurisdiction",
+    "state": "ID",
+    "expected_types": ["hate_crime", "mmiw", "police_killing"],
+    "historical_density": "moderate",
+    "notes": "Active white supremacist organizations historically — Aryan Nations in Hayden Lake. Hate crime incidents. Nez Perce and Shoshone-Bannock Nations — MMIW cases."
+  },
+  {
+    "id": "j_IL",
+    "name": "Illinois Specialist",
+    "domain": "jurisdiction",
+    "state": "IL",
+    "expected_types": ["police_killing", "hate_crime", "massacre"],
+    "historical_density": "critical",
+    "notes": "Chicago — highest urban police killing rate. Chicago Race Riot 1919. Jon Burge torture scandal — systematic torture of Black suspects 1972-1991. Significant ongoing police violence documentation."
+  },
+  {
+    "id": "j_IN",
+    "name": "Indiana Specialist",
+    "domain": "jurisdiction",
+    "state": "IN",
+    "expected_types": ["lynching", "hate_crime", "police_killing"],
+    "historical_density": "high",
+    "notes": "KKK had largest membership of any state in 1920s — estimated 30% of white male population. High lynching count. Marion lynching 1930 — last documented Northern lynching. Documented hate crime incidents."
+  },
+  {
+    "id": "j_IA",
+    "name": "Iowa Specialist",
+    "domain": "jurisdiction",
+    "state": "IA",
+    "expected_types": ["police_killing", "hate_crime"],
+    "historical_density": "moderate",
+    "notes": "Lower density but documented incidents. Police killings occur. Hate crimes documented. Mesquakie Nation — some MMIW cases."
+  },
+  {
+    "id": "j_KS",
+    "name": "Kansas Specialist",
+    "domain": "jurisdiction",
+    "state": "KS",
+    "expected_types": ["lynching", "hate_crime", "police_killing"],
+    "historical_density": "high",
+    "notes": "Bleeding Kansas — pre-Civil War racial violence. High lynching count. Significant hate crime incidents. Wichita — documented police violence."
+  },
+  {
+    "id": "j_KY",
+    "name": "Kentucky Specialist",
+    "domain": "jurisdiction",
+    "state": "KY",
+    "expected_types": ["lynching", "police_killing", "hate_crime"],
+    "historical_density": "critical",
+    "notes": "Breonna Taylor 2020 — Louisville. High lynching count. Documented police violence. Christian County — documented racial terror history."
+  },
+  {
+    "id": "j_LA",
+    "name": "Louisiana Specialist",
+    "domain": "jurisdiction",
+    "state": "LA",
+    "expected_types": ["lynching", "massacre", "police_killing"],
+    "historical_density": "critical",
+    "notes": "2nd highest lynching count in EJI data. Colfax Massacre 1873 — deadliest single act of racial terror in Reconstruction. New Orleans — documented police violence history. Alton Sterling 2016 — Baton Rouge."
+  },
+  {
+    "id": "j_ME",
+    "name": "Maine Specialist",
+    "domain": "jurisdiction",
+    "state": "ME",
+    "expected_types": ["mmiw", "hate_crime", "police_killing"],
+    "historical_density": "moderate",
+    "notes": "Wabanaki Nations — documented MMIW cases. Maine has highest per-capita Indigenous population in New England. Some hate crime incidents."
+  },
+  {
+    "id": "j_MD",
+    "name": "Maryland Specialist",
+    "domain": "jurisdiction",
+    "state": "MD",
+    "expected_types": ["lynching", "police_killing", "hate_crime"],
+    "historical_density": "high",
+    "notes": "Freddie Gray 2015 — Baltimore. Significant police violence history. Documented lynchings. Baltimore — ongoing police brutality documentation."
+  },
+  {
+    "id": "j_MA",
+    "name": "Massachusetts Specialist",
+    "domain": "jurisdiction",
+    "state": "MA",
+    "expected_types": ["police_killing", "hate_crime"],
+    "historical_density": "moderate",
+    "notes": "Boston — documented history of racial violence and police brutality. Busing riots 1974-1975. Significant hate crime incidents. Lower lynching count but documented racial terror."
+  },
+  {
+    "id": "j_MI",
+    "name": "Michigan Specialist",
+    "domain": "jurisdiction",
+    "state": "MI",
+    "expected_types": ["massacre", "police_killing", "hate_crime"],
+    "historical_density": "high",
+    "notes": "Detroit Race Riot 1943 — 34 killed, 433 injured. Detroit 1967 uprising. Documented police violence. Significant hate crime incidents. Flint water crisis — environmental racism."
+  },
+  {
+    "id": "j_MN",
+    "name": "Minnesota Specialist",
+    "domain": "jurisdiction",
+    "state": "MN",
+    "expected_types": ["police_killing", "mmiw", "hate_crime"],
+    "historical_density": "critical",
+    "notes": "George Floyd 2020 — Minneapolis. Philando Castile 2016 — Falcon Heights. High MMIW rate — Missing and Murdered Indigenous Women task force established. Duluth lynchings 1920."
+  },
+  {
+    "id": "j_MS",
+    "name": "Mississippi Specialist",
+    "domain": "jurisdiction",
+    "state": "MS",
+    "expected_types": ["lynching", "massacre", "hate_crime", "police_killing"],
+    "historical_density": "critical",
+    "notes": "3rd highest lynching count in EJI data. Emmett Till 1955 — Money. Medgar Evers assassination 1963. Vernon Dahmer 1966. Highest concentration of racial terror per capita. Mississippi Burning — COINTELPRO era murders."
+  },
+  {
+    "id": "j_MO",
+    "name": "Missouri Specialist",
+    "domain": "jurisdiction",
+    "state": "MO",
+    "expected_types": ["massacre", "police_killing", "hate_crime"],
+    "historical_density": "critical",
+    "notes": "Michael Brown 2014 — Ferguson. East St. Louis Massacre 1917 — up to 200 Black residents killed. High police killing rate. Springfield — documented racial terror history."
+  },
+  {
+    "id": "j_MT",
+    "name": "Montana Specialist",
+    "domain": "jurisdiction",
+    "state": "MT",
+    "expected_types": ["mmiw", "police_killing"],
+    "historical_density": "critical",
+    "notes": "Highest per-capita MMIW rate after Alaska. Blackfeet, Crow, Northern Cheyenne, Salish nations. Highway 2 — documented corridor of missing Indigenous women. Extreme documentation gap between reported and federal database."
+  },
+  {
+    "id": "j_NE",
+    "name": "Nebraska Specialist",
+    "domain": "jurisdiction",
+    "state": "NE",
+    "expected_types": ["lynching", "hate_crime", "police_killing"],
+    "historical_density": "moderate",
+    "notes": "Omaha Race Riot 1919 — Will Brown lynching. Documented hate crime incidents. Omaha — significant police violence history."
+  },
+  {
+    "id": "j_NV",
+    "name": "Nevada Specialist",
+    "domain": "jurisdiction",
+    "state": "NV",
+    "expected_types": ["police_killing", "hate_crime", "mmiw"],
+    "historical_density": "moderate",
+    "notes": "Las Vegas — documented police violence. Pyramid Lake Paiute and other nations — some MMIW cases. Hate crime incidents in urban areas."
+  },
+  {
+    "id": "j_NH",
+    "name": "New Hampshire Specialist",
+    "domain": "jurisdiction",
+    "state": "NH",
+    "expected_types": ["hate_crime", "police_killing"],
+    "historical_density": "low",
+    "notes": "Lower density. Some hate crime incidents. Police killings occur. Abenaki Nation — limited documentation."
+  },
+  {
+    "id": "j_NJ",
+    "name": "New Jersey Specialist",
+    "domain": "jurisdiction",
+    "state": "NJ",
+    "expected_types": ["police_killing", "hate_crime"],
+    "historical_density": "high",
+    "notes": "High hate crime reporting rate. Newark — significant police violence history. Philip Pannell 1990 — Teaneck. Documented racial profiling on NJ Turnpike."
+  },
+  {
+    "id": "j_NM",
+    "name": "New Mexico Specialist",
+    "domain": "jurisdiction",
+    "state": "NM",
+    "expected_types": ["mmiw", "police_killing", "massacre"],
+    "historical_density": "critical",
+    "notes": "2nd highest MMIW rate. Navajo Nation, Pueblo, Apache nations. Long River — documented trafficking corridor. Albuquerque — one of highest police killing rates per capita nationally. Sand Creek proximity — regional massacre history."
+  },
+  {
+    "id": "j_NY",
+    "name": "New York Specialist",
+    "domain": "jurisdiction",
+    "state": "NY",
+    "expected_types": ["police_killing", "hate_crime", "massacre"],
+    "historical_density": "critical",
+    "notes": "Eric Garner 2014 — Staten Island. NYC Draft Riots 1863 — mass lynching of Black residents. High hate crime reporting. NYPD — extensive documented brutality history. Amadou Diallo 1999. Sean Bell 2006."
+  },
+  {
+    "id": "j_NC",
+    "name": "North Carolina Specialist",
+    "domain": "jurisdiction",
+    "state": "NC",
+    "expected_types": ["massacre", "lynching", "police_killing", "hate_crime"],
+    "historical_density": "critical",
+    "notes": "Wilmington Massacre 1898 — only successful coup d'etat in US history. Last state to criminalize marital rape 1993. High lynching count. Documented police violence. Charlotte — significant civil rights history."
+  },
+  {
+    "id": "j_ND",
+    "name": "North Dakota Specialist",
+    "domain": "jurisdiction",
+    "state": "ND",
+    "expected_types": ["mmiw", "police_killing"],
+    "historical_density": "high",
+    "notes": "Standing Rock Sioux — DAPL protests 2016, documented police brutality against protesters. High MMIW rate. Three Affiliated Tribes — documented missing persons cases. Remote geography creates documentation gaps."
+  },
+  {
+    "id": "j_OH",
+    "name": "Ohio Specialist",
+    "domain": "jurisdiction",
+    "state": "OH",
+    "expected_types": ["police_killing", "hate_crime", "massacre"],
+    "historical_density": "critical",
+    "notes": "Tamir Rice 2014 — Cleveland. John Crawford III 2014 — Beavercreek. Cincinnati Race Riot 2001. High police killing rate. Springfield and Dayton — documented racial terror history."
+  },
+  {
+    "id": "j_OK",
+    "name": "Oklahoma Specialist",
+    "domain": "jurisdiction",
+    "state": "OK",
+    "expected_types": ["massacre", "mmiw", "police_killing", "lynching"],
+    "historical_density": "critical",
+    "notes": "Tulsa Race Massacre 1921 — Black Wall Street destroyed, up to 300 killed. Osage Indian Murders 1920s — systematic killing for oil rights. Highest concentration of massacre sites. Significant MMIW — multiple tribal nations. High police killing rate."
+  },
+  {
+    "id": "j_OR",
+    "name": "Oregon Specialist",
+    "domain": "jurisdiction",
+    "state": "OR",
+    "expected_types": ["hate_crime", "mmiw", "police_killing"],
+    "historical_density": "high",
+    "notes": "Oregon founded as whites-only state — constitution banned Black residents until 1926. Active white supremacist organizations. Proud Boys documented incidents. Significant MMIW — Warm Springs, Grand Ronde nations."
+  },
+  {
+    "id": "j_PA",
+    "name": "Pennsylvania Specialist",
+    "domain": "jurisdiction",
+    "state": "PA",
+    "expected_types": ["massacre", "police_killing", "hate_crime"],
+    "historical_density": "critical",
+    "notes": "MOVE Bombing 1985 — Philadelphia. 11 killed including 5 children. High police killing rate. Pittsburgh — Tree of Life synagogue shooting 2018 — deadliest antisemitic attack in US history. Pittsburgh — documented police violence."
+  },
+  {
+    "id": "j_RI",
+    "name": "Rhode Island Specialist",
+    "domain": "jurisdiction",
+    "state": "RI",
+    "expected_types": ["police_killing", "hate_crime"],
+    "historical_density": "moderate",
+    "notes": "Providence — documented police violence. Some hate crime incidents. Narragansett Nation — limited documentation. Smallest state, lower overall density."
+  },
+  {
+    "id": "j_SC",
+    "name": "South Carolina Specialist",
+    "domain": "jurisdiction",
+    "state": "SC",
+    "expected_types": ["massacre", "lynching", "police_killing", "hate_crime"],
+    "historical_density": "critical",
+    "notes": "Walter Scott 2015 — North Charleston. Orangeburg Massacre 1968 — 3 students killed by highway patrol. Emanuel AME Church shooting 2015 — 9 killed. High lynching count. Still requires weapon or extreme violence to prosecute spousal rape."
+  },
+  {
+    "id": "j_SD",
+    "name": "South Dakota Specialist",
+    "domain": "jurisdiction",
+    "state": "SD",
+    "expected_types": ["massacre", "mmiw", "police_killing"],
+    "historical_density": "critical",
+    "notes": "Wounded Knee Massacre 1890 — 250-300 Lakota killed by US Army. Pine Ridge Reservation — highest MMIW rate of any reservation. AIM occupation 1973 — documented federal violence. Rapid City — high police violence rate."
+  },
+  {
+    "id": "j_TN",
+    "name": "Tennessee Specialist",
+    "domain": "jurisdiction",
+    "state": "TN",
+    "expected_types": ["lynching", "police_killing", "hate_crime"],
+    "historical_density": "critical",
+    "notes": "Memphis — Martin Luther King Jr assassination 1968. KKK founded in Pulaski 1865. High lynching count. Documented police violence. Ida B. Wells — Memphis Free Speech, documented lynching from Tennessee."
+  },
+  {
+    "id": "j_TX",
+    "name": "Texas Specialist",
+    "domain": "jurisdiction",
+    "state": "TX",
+    "expected_types": ["lynching", "massacre", "police_killing", "hate_crime", "mmiw"],
+    "historical_density": "critical",
+    "notes": "5th highest lynching count. Texas Rangers — documented mass killings of Mexican Americans 1910-1920, up to 5,000 killed. High police killing rate — leads nation most years. El Paso Walmart shooting 2019 — anti-Latino hate crime. James Byrd Jr lynching 1998 — Jasper. Significant MMIW along border."
+  },
+  {
+    "id": "j_UT",
+    "name": "Utah Specialist",
+    "domain": "jurisdiction",
+    "state": "UT",
+    "expected_types": ["mmiw", "police_killing", "hate_crime"],
+    "historical_density": "moderate",
+    "notes": "Navajo Nation extends into Utah. Some MMIW cases. Documented police killings. Salt Lake City — hate crime incidents."
+  },
+  {
+    "id": "j_VT",
+    "name": "Vermont Specialist",
+    "domain": "jurisdiction",
+    "state": "VT",
+    "expected_types": ["hate_crime", "police_killing"],
+    "historical_density": "low",
+    "notes": "Lowest density state. Some hate crime incidents. Abenaki Nation — limited documentation. Police killings occur even in low-density states."
+  },
+  {
+    "id": "j_VA",
+    "name": "Virginia Specialist",
+    "domain": "jurisdiction",
+    "state": "VA",
+    "expected_types": ["lynching", "hate_crime", "police_killing", "massacre"],
+    "historical_density": "critical",
+    "notes": "Charlottesville Unite the Right rally 2017 — documented hate violence. High lynching count. Virginia Beach — documented police violence. Richmond — capital of Confederacy, significant racial terror history."
+  },
+  {
+    "id": "j_WA",
+    "name": "Washington Specialist",
+    "domain": "jurisdiction",
+    "state": "WA",
+    "expected_types": ["mmiw", "hate_crime", "police_killing"],
+    "historical_density": "high",
+    "notes": "High MMIW rate — multiple tribal nations including Yakama, Puyallup, Spokane. Seattle — documented police violence, consent decree with DOJ. Tacoma — documented police violence. Anti-Asian hate crimes."
+  },
+  {
+    "id": "j_WV",
+    "name": "West Virginia Specialist",
+    "domain": "jurisdiction",
+    "state": "WV",
+    "expected_types": ["lynching", "police_killing", "hate_crime"],
+    "historical_density": "moderate",
+    "notes": "Documented lynchings. Coal mining region — documented labor and racial violence. Some hate crime incidents. Police killings occur."
+  },
+  {
+    "id": "j_WI",
+    "name": "Wisconsin Specialist",
+    "domain": "jurisdiction",
+    "state": "WI",
+    "expected_types": ["police_killing", "hate_crime", "mmiw"],
+    "historical_density": "high",
+    "notes": "Jacob Blake 2020 — Kenosha. Documented MMIW — Menominee, Ojibwe, Ho-Chunk nations. Milwaukee — significant police violence history. Anti-Sikh hate crimes documented."
+  },
+  {
+    "id": "j_WY",
+    "name": "Wyoming Specialist",
+    "domain": "jurisdiction",
+    "state": "WY",
+    "expected_types": ["mmiw", "hate_crime", "police_killing"],
+    "historical_density": "high",
+    "notes": "Wind River Reservation — documented high MMIW rate. Eastern Shoshone and Northern Arapaho. Matthew Shepard hate crime murder 1998 — Laramie. Remote geography creates documentation gaps for Indigenous cases."
+  },
+  {
+    "id": "j_DC",
+    "name": "Washington DC Specialist",
+    "domain": "jurisdiction",
+    "state": "DC",
+    "expected_types": ["police_killing", "hate_crime"],
+    "historical_density": "high",
+    "notes": "Federal jurisdiction — unique legal landscape. MPD — documented police violence. Significant hate crime incidents. Federal civil rights cases originate here."
+  }
+]

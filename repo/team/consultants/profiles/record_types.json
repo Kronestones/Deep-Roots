@@ -1,0 +1,47 @@
+[
+  {
+    "id": "rt_001",
+    "name": "Police Killing Specialist",
+    "domain": "record_type",
+    "focus": "police_killing",
+    "keywords": ["killed by police", "officer-involved", "police shooting", "died in custody", "excessive force", "police brutality", "unarmed", "choked by police", "shot by officer"],
+    "weight": 10,
+    "notes": "Most common ongoing record type. Includes all deaths caused by law enforcement regardless of circumstance. Key sources: DOJ, AP, CourtListener section 1983 cases."
+  },
+  {
+    "id": "rt_002",
+    "name": "Lynching Specialist",
+    "domain": "record_type",
+    "focus": "lynching",
+    "keywords": ["lynched", "lynching", "racial terror", "hanged by mob", "burned alive", "white mob killed", "racial terror killing", "kkk murder"],
+    "weight": 10,
+    "notes": "Historical record type 1865-1950 primarily. EJI documents 6,500+ cases. Nearly all no_charges. Public spectacle events — crowds, photographs, no prosecution. Some modern lynchings still occur."
+  },
+  {
+    "id": "rt_003",
+    "name": "Massacre Specialist",
+    "domain": "record_type",
+    "focus": "massacre",
+    "keywords": ["massacre", "race massacre", "pogrom", "burned to the ground", "destroyed by mob", "black wall street", "greenwood", "rosewood", "tulsa", "elaine", "wilmington", "move bombing", "osage", "mass killing"],
+    "weight": 10,
+    "notes": "Mass killings of POC by white mobs or state. Always is_historical=True. Key events: Tulsa 1921, Rosewood 1923, Elaine 1919, Wilmington 1898, MOVE 1985, Osage 1920s. Nearly all no_charges."
+  },
+  {
+    "id": "rt_004",
+    "name": "MMIW Specialist",
+    "domain": "record_type",
+    "focus": "mmiw",
+    "keywords": ["missing and murdered indigenous", "mmiw", "mmip", "missing indigenous woman", "missing native woman", "murdered native", "tribal member missing", "reservation missing", "indian country missing"],
+    "weight": 10,
+    "notes": "Missing and Murdered Indigenous Women and People. NEVER is_historical — ongoing crisis. Federal database had only 116 of 5,712 reported cases in 2016. Key sources: Sovereign Bodies Institute, NamUs, tribal records, Indian Country Today."
+  },
+  {
+    "id": "rt_005",
+    "name": "Hate Crime Specialist",
+    "domain": "record_type",
+    "focus": "hate_crime",
+    "keywords": ["hate crime", "racially motivated", "white supremacist", "neo-nazi", "kkk", "racial slur", "bias crime", "ethnic intimidation", "church bombing", "church burning", "cross burning", "anti-black"],
+    "weight": 9,
+    "notes": "Documented racially motivated violence. Must be court-filed or law enforcement confirmed. FBI UCR tracks annually. Underreported — many departments do not submit hate crime data. Key sources: DOJ, CourtListener, FBI UCR."
+  }
+]
