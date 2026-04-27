@@ -536,7 +536,7 @@
     </div>
 
     <div class="handprint-header">
-      <span class="handprint">🖐🏽</span>
+      <span class="handprint">🪶</span>
       <span class="handprint-title">Missing &amp; Murdered Indigenous People</span>
     </div>
 
@@ -635,10 +635,10 @@ const SERVER_TOTAL = {{ total }};
 
 const TYPE_COLORS = {
   police_killing: '#c0392b',
-  lynching:       '#c0392b',
+  lynching:       '#e8a020',
   massacre:       '#6a4c9c',
-  hate_crime:     '#e74c3c',
-  mmiw:           '#ff6b35',
+  hate_crime:     '#2980b9',
+  mmiw:           '#2ecc71',
 };
 
 // ── Map ───────────────────────────────────────────────────────────────────────
@@ -682,9 +682,12 @@ function renderMap() {
   const items = filteredCases();
   items.forEach(c => {
     if (!c.lat || !c.lng) return;
+    const jitter = () => (Math.random() - 0.5) * 0.004;
+    const lat = c.lat + jitter();
+    const lng = c.lng + jitter();
     const color  = TYPE_COLORS[c.record_type] || '#888';
     const isMmiw = c.record_type === 'mmiw';
-    const circle = L.circleMarker([c.lat, c.lng], {
+    const circle = L.circleMarker([lat, lng], {
       radius:      isMmiw ? 7 : 6,
       fillColor:   color,
       color:       isMmiw ? '#fff' : color,
@@ -692,10 +695,12 @@ function renderMap() {
       fillOpacity: 0.85,
     });
     circle.bindPopup(`
-      <div class="popup-type">${(c.record_type||'').replace('_',' ')}</div>
-      <div class="popup-summary">${(c.summary||'').slice(0,160)}${c.summary&&c.summary.length>160?'…':''}</div>
+      <div class="popup-type">${(c.record_type||'').replace(/_/g,' ')}</div>
+      ${c.victim_name ? `<div style="font-family:'Crimson Pro',serif;font-size:15px;font-weight:600;margin-bottom:4px;color:var(--text)">${c.victim_name}</div>` : ''}
+      ${c.victim_race ? `<div style="font-size:9px;letter-spacing:1px;color:var(--muted);margin-bottom:6px;text-transform:uppercase">${c.victim_race}</div>` : ''}
+      <div class="popup-summary">${(c.summary||'').slice(0,180)}${c.summary&&c.summary.length>180?'…':''}</div>
       <div class="popup-meta">${c.city||''} ${c.state||''} &nbsp;·&nbsp; ${c.date||''}</div>
-      ${c.source_url ? `<div class="popup-meta" style="margin-top:4px;"><a href="${c.source_url}" target="_blank" style="color:#c0392b;">source ↗</a></div>` : ''}
+      ${c.source_url ? `<div class="popup-meta" style="margin-top:6px;"><a href="${c.source_url}" target="_blank" style="color:#c0392b;text-decoration:none;letter-spacing:1px;font-size:8px;">READ FULL STORY ↗</a></div>` : ''}
     `);
     markers.addLayer(circle);
   });

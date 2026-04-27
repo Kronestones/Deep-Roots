@@ -183,8 +183,10 @@ def fetch_courtlistener() -> list:
 # ── AP RSS — police brutality / civil rights ──────────────────────────────────
 
 AP_FEEDS = [
-    "https://feeds.apnews.com/rss/apf-topnews",
-    "https://feeds.apnews.com/rss/apf-usnews",
+    "https://rss.nytimes.com/services/xml/rss/nyt/US.xml",
+    "https://feeds.npr.org/1003/rss.xml",
+    "https://www.theguardian.com/us-news/rss",
+    "https://www.theguardian.com/society/race/rss",
 ]
 
 def fetch_ap_rss() -> list:
